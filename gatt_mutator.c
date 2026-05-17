@@ -17,6 +17,30 @@
 //
 // Then link gatt_packet_mutator.o into the fuzzer binary.
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+size_t LLVMFuzzerCustomMutator(
+    uint8_t *Data,
+    size_t Size,
+    size_t MaxSize,
+    unsigned Seed);
+
+size_t LLVMFuzzerCustomCrossOver(
+    const uint8_t *Data1,
+    size_t Size1,
+    const uint8_t *Data2,
+    size_t Size2,
+    uint8_t *Out,
+    size_t MaxOutSize,
+    unsigned Seed);
+
+#ifdef __cplusplus
+}
+#endif
+
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
